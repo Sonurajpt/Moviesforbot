@@ -621,6 +621,19 @@ show_9683643({
   }
 })
 
+        // monetag + download flow
+    pdfBtn.addEventListener("click", e=>{
+      e.preventDefault();
+      // show rewarded ad first
+      show_9669778().then(()=>{
+        // after ad, perform actual download/open
+        window.open(pdfBtn.href, "_blank");
+      }).catch(err=>{
+        console.warn("Ad failed or closed:", err);
+        // fallback: still open PDF
+        window.open(pdfBtn.href, "_blank");
+      });
+    });
 /*
 This value is decoded as follows:
 - show automatically 2 ads
